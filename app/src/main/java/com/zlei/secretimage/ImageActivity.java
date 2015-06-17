@@ -53,8 +53,6 @@ public class ImageActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_image_pager);
-        if(getActionBar() != null)
-            getActionBar().hide();
 
         imageLoader = ImageLoader.getInstance();
         if (!imageLoader.isInited()) {

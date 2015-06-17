@@ -33,8 +33,6 @@ public class MainActivity extends Activity{
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
     private String[] mListTitles;
 
     @Override
@@ -44,7 +42,6 @@ public class MainActivity extends Activity{
 
         //main app
         this.getImagePath();
-        mTitle = mDrawerTitle = getTitle();
         mListTitles = getResources().getStringArray(R.array.lists_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -58,12 +55,6 @@ public class MainActivity extends Activity{
                 R.layout.drawer_list_item, mListTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        // enable ActionBar app icon to behave as action to toggle nav drawer
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -72,12 +63,12 @@ public class MainActivity extends Activity{
                 R.string.drawer_close
                 ) {
                     public void onDrawerClosed(View view) {
-                        getActionBar().setTitle(mTitle);
+                        //getActionBar().setTitle(mTitle);
                         invalidateOptionsMenu();
                     }
 
                     public void onDrawerOpened(View drawerView) {
-                        getActionBar().setTitle(mDrawerTitle);
+                        //getActionBar().setTitle(mDrawerTitle);
                         invalidateOptionsMenu();
                     }
                 };
@@ -91,6 +82,11 @@ public class MainActivity extends Activity{
     public void onStartClick(View view) {
         Intent intent = new Intent(this, ImageActivity.class);
         intent.putExtra(Extra.IMAGES, IMAGES);
+        startActivity(intent);
+    }
+
+    public void onVideoClick(View view) {
+        Intent intent = new Intent(this, VideoActivity.class);
         startActivity(intent);
     }
 
@@ -156,20 +152,8 @@ public class MainActivity extends Activity{
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mListTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        mTitle = title;
-        getActionBar().setTitle(mTitle);
-    }
-
-    /**
-     * When using the ActionBarDrawerToggle, you must call it during
-     * onPostCreate() and onConfigurationChanged()...
-     */
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

@@ -5,11 +5,23 @@
 
     <Button
         android:id="@+id/button_start"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/main_btn_width"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:onClick="onStartClick"
         android:text="@string/button_start" >
+    </Button>
+
+    <Button
+        android:id="@+id/button_video"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/button_start"
+        android:onClick="onVideoClick"
+        android:text="@string/button_video" >
     </Button>
 
 </RelativeLayout>
